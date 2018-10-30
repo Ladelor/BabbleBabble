@@ -1,0 +1,6 @@
+{
+  "name": "BabbleBabble-server",
+  "version": "0.0.1",
+  "description": "BabbleBabble chat room server",
+  "dependencies": {}
+}
