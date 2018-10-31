@@ -7,6 +7,7 @@ class ChatRoom extends Component {
   render() {
     return (
         <div class="chat-room">
+            <script src="/socket.io/socket.io.js"></script>
             <Header />
             <MessageBoard />
             <ChatEntry />
