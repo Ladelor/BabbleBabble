@@ -1,9 +1,18 @@
-var app = require('express')();
-var http = require('http').Server(app);
+const http = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3001;
+
 var io = require('socket.io')(http);
 
-app.get('/', function(req, res){
-  res.send('<h1>This is the BabbleBabble Chat Room server</h1>');
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 
 io.on('connection', function(socket){
