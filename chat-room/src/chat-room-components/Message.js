@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const io = require('socket.io')();
+const io = require('socket.io-client')();
 
 class Message extends Component {
   constructor(props) {
