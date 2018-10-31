@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Message from './Message';
 
 class MessageBoard extends Component {
   render() {
     return (
-        <h1>heybye</h1>
+        <Message test="test"/>
     );
   }
 }
