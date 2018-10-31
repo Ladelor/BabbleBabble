@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+class MessageBoard extends Component {
   render() {
     return (
         <h1>heybye</h1>
@@ -8,4 +8,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default MessageBoard
