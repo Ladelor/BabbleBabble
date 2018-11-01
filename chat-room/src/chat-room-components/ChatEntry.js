@@ -9,18 +9,17 @@ class ChatEntry extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let inputField = document.getElementById("chat-input");
-    if (inputField.value === "") {
+    if (this.chatInput.value === "") {
       return;
     }
-    this.chatServer.emit('message', inputField.value);
-    inputField.value = "";
+    this.chatServer.emit('message', this.chatInput.value);
+    this.chatInput.value = "";
   }
 
   render() {
     return (
         <form id="chat-entry" onSubmit={this.handleSubmit}>
-          <input id="chat-input" type="text" name="chat-input"></input>
+          <input type="text" name="chat-input" ref={ref => this.chatInput = ref}></input>
           <input type="submit" value="Submit"></input>
         </form>
     );
