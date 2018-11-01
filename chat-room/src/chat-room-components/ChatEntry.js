@@ -7,7 +7,10 @@ class ChatEntry extends Component {
   }
   render() {
     return (
-        <h1>heybye</h1>
+        <form id="chat-entry">
+          <input type="text" name="chat-input"></input>
+          <input type="submit" value="Submit"></input>
+        </form>
     );
   }
 }
