@@ -6,26 +6,34 @@ class MessageBoard extends Component {
     super(props);
     this.chatServer = props.chatServer;
     this.chatServer.on('message', this.addMessage.bind(this));
-    //this.addMessage = this.addMessage.bind(this);
-    this.state = {messages: []};
-
+    this.state = { messages: [] };
   }
 
   addMessage(message){
     console.log(this);
     this.setState(prevState => ({
       messages: [...prevState.messages, message]
-    }))
+    }));
     console.log(this.state);
   }
 
-  render() {
+  getCommentComponents() {
     let comments = [];
     this.state.messages.forEach(function(message){
-      comments.push(<Message messageText={message} />);
-    })
+      comments.push(
+      <li className="comment">
+        <Message messageText={ message } />
+      </li>);
+    });
+    return comments;
+  }
+
+  render() {
+    let comments = this.getCommentComponents();
     return (
-        <div>{comments}</div>
+        <ul className="comment-container">
+          { comments }
+        </ul>
     );
   }
 }
