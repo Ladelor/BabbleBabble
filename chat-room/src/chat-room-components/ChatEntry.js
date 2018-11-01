@@ -10,6 +10,9 @@ class ChatEntry extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let inputField = document.getElementById("chat-input");
+    if (inputField.value === "") {
+      return;
+    }
     this.chatServer.emit('message', inputField.value);
     inputField.value = "";
   }
