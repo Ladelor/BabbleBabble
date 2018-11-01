@@ -26,10 +26,20 @@ class MessageBoard extends Component {
     return comments;
   }
 
+  componentDidUpdate() {
+    this.myCommentList.scrollTop = this.myCommentList.scrollHeight;
+  }
+
+  scrollToBottomOfCotainer() {
+    var element = document.getElementById("comment-container");
+    element.scrollTop = element.scrollHeight;
+  }
+
   render() {
     let comments = this.getCommentComponents();
+
     return (
-        <ul className="comment-container">
+        <ul id="comment-container" ref={ref => this.myCommentList = ref}>
           { comments }
         </ul>
     );

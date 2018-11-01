@@ -23,9 +23,12 @@ code {
   text-align: left;
 }
 
-.comment-container {
+#comment-container {
   list-style-type: none;
   border: 1px solid;
+  height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 li:nth-child(even) {
