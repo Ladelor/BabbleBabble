@@ -4,10 +4,11 @@ io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('message', function(message) {
     console.log(message);
+    io.emit('message', message);
   })
 });
 
 const port = 3001;
 io.listen(port, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log('Server running at http://${hostname}:${port}/');
 });
