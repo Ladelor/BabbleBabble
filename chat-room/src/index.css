@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#chat-room {
+  width: 800px;
+  margin: auto;
+}
+
+.comment {
+  text-align: left;
+}
+
+.comment-container {
+  list-style-type: none;
+}
+
+li:nth-child(even) {
+  background-color: lightgray;
+}
