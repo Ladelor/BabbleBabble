@@ -4,7 +4,8 @@ io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('message', function(message) {
     console.log(message);
-    io.emit('message', message);
+    let curDate = new Date();
+    io.emit('message', { "message": message, "timeStamp": curDate.getTime() });
   })
 });
 
