@@ -19,11 +19,11 @@ code {
   border: 1px solid;
 }
 
-.comment {
+.message {
   text-align: left;
 }
 
-#comment-container {
+#message-container {
   list-style-type: none;
   border: 1px solid;
   height: 400px;
@@ -31,6 +31,6 @@ code {
   overflow-y: scroll;
 }
 
-li:nth-child(even) {
+.message:nth-child(even) {
   background-color: lightgray;
 }

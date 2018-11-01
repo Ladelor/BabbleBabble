@@ -15,27 +15,24 @@ class MessageBoard extends Component {
     }));
   }
 
-  getCommentComponents() {
-    let comments = [];
+  getMessageComponents() {
+    let messageComponents = [];
     this.state.messages.forEach(function(message){
-      comments.push(
-      <li className="comment">
-        <Message messageText={ message } />
-      </li>);
+      messageComponents.push(<Message messageText={ message } />);
     });
-    return comments;
+    return messageComponents;
   }
 
   componentDidUpdate() {
-    this.commentList.scrollTop = this.commentList.scrollHeight;
+    this.messageList.scrollTop = this.messageList.scrollHeight;
   }
 
   render() {
-    let comments = this.getCommentComponents();
+    let messageComponents = this.getMessageComponents();
 
     return (
-        <ul id="comment-container" ref={ref => this.commentList = ref}>
-          { comments }
+        <ul id="message-container" ref={ref => this.messageList = ref}>
+          { messageComponents }
         </ul>
     );
   }
