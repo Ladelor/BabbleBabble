@@ -16,6 +16,7 @@ code {
 #chat-room {
   width: 800px;
   margin: auto;
+  border: 1px solid;
 }
 
 .comment {
@@ -24,6 +25,7 @@ code {
 
 .comment-container {
   list-style-type: none;
+  border: 1px solid;
 }
 
 li:nth-child(even) {

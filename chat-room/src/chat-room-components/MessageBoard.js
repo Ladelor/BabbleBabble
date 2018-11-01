@@ -10,11 +10,9 @@ class MessageBoard extends Component {
   }
 
   addMessage(message){
-    console.log(this);
     this.setState(prevState => ({
       messages: [...prevState.messages, message]
     }));
-    console.log(this.state);
   }
 
   getCommentComponents() {
