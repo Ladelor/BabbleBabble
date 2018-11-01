@@ -13,7 +13,6 @@ class ChatRoom extends Component {
   render() {
     return (
         <div id="chat-room">
-            <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
             <script src="/socket.io/socket.io.js"></script>
             <Header />
             <MessageBoard chatServer={this.socket} />
