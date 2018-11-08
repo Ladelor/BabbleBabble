@@ -18,8 +18,13 @@ code {
     border: 1px solid;
 
     #header {
-        .chatroom-title {
-            display: inline;
+        .chatroom-title, .clock {
+            width: 50%;
+            display: inline-block;
+        }
+
+        .clock {
+            text-align: right;
         }
     }
     
