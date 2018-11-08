@@ -16,6 +16,12 @@ code {
     width: 800px;
     margin: auto;
     border: 1px solid;
+
+    #header {
+        .chatroom-title {
+            display: inline;
+        }
+    }
     
     #message-container {
         list-style-type: none;

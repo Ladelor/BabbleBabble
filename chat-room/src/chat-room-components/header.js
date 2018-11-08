@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import Clock from './Clock';
 
 class Header extends Component {
   render() {
     return (
-        <h1>This is a chat room</h1>
+        <div id="header">
+          <h1 className="chatroom-title">BabbleBabble Chatroom</h1>
+          <Clock />
+        </div>
     );
   }
 }
