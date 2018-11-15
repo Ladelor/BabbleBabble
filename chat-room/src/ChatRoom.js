@@ -30,7 +30,7 @@ class ChatRoom extends Component {
       return  (
           <div>
             <MessageBoard chatServer={this.socket} />
-            <ChatEntry chatServer={this.socket}/>
+            <ChatEntry chatServer={this.socket} />
           </div>
         );
     }
@@ -44,10 +44,9 @@ class ChatRoom extends Component {
 
     return (
         <div id="chat-room">
-            <script src="/socket.io/socket.io.js"></script>
+            <script src="/socket.io/socket.io.js" />
             <Header />
-            {chatRoomContents}
-           
+            { chatRoomContents }
         </div>
     );
   }
