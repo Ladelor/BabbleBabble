@@ -43,7 +43,6 @@ class ChatRoom extends Component {
 
   userLoggedIn = (username) => {
     this.username = username;
-    console.log(username);
     this.setState({
       isUserSignedIn: true,
       username: username,

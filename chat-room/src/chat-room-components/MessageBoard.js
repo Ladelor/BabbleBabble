@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import Message from './Message';
 
 class MessageBoard extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.chatServer = props.chatServer;
     this.chatServer.on('message', this.addMessage.bind(this));
+    this.chatServer.on('userEnteredServer', this.addMessage.bind(this));
     this.state = { messages: [] };
   }
 
-  addMessage(message){
-    console.log(message.sender);
+  addMessage(message) {
     this.setState(prevState => ({
       messages: [...prevState.messages, message]
     }));

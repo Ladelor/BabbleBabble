@@ -16,7 +16,7 @@ io.on('connection', function(socket){
     }
     else {
       socket.emit('loginSuccess', getLoginObject(loginAttempt.username));
-      io.emit('userLogin', getLoginObject(loginAttempt.username));
+      io.emit('userEnteredServer', getUserEnteredSeverObject(loginAttempt.username));
       console.log('user entered chatroom: ' + loginAttempt.username);
     }
   });
@@ -25,6 +25,12 @@ io.on('connection', function(socket){
 function getMessageObject(messageObject) {
   let curDate = new Date();
   return { 'message': messageObject.message, 'timeStamp': curDate.getTime(), 'sender': messageObject.username };
+}
+
+function getUserEnteredSeverObject(username) {
+  let curDate = new Date();
+  return { 'message': username + " joined the chatroom", 'timeStamp': curDate.getTime(), 'sender': "Server" };
+
 }
 
 function getLoginObject(username) {
