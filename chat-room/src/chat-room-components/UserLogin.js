@@ -14,6 +14,7 @@ class UserLogin extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.chatServer.on('loginSuccess', this.loginSuccess.bind(this));
       this.chatServer.on('loginFail', this.loginFail.bind(this));
+      this.state = { colorSelected: '#000000' };
   }
 
   handleSubmit(e) {
@@ -25,9 +26,15 @@ class UserLogin extends Component {
     this.chatServer.value = "";
   }
 
+  colorChanged = (color) => {
+    this.setState({
+      colorSelected: color.hex,
+    });
+  }
+
   loginSuccess(loginAttempt) {
     this.cookies.set(this.dailyLoginCookie, loginAttempt.username, { maxAge: Utils.convertDaysToSeconds(1) });
-    this.loginFunction(loginAttempt.username);
+    this.loginFunction(loginAttempt.username, this.state.colorSelected);
   }
   
   loginFail(loginAttempt) {
@@ -38,9 +45,10 @@ class UserLogin extends Component {
   render() {
     return (
       <form id="user-login" onSubmit={this.handleSubmit}>
+        <h4 className="login-subheader">Choose username: </h4>
         <input type="text" name="login-input" ref={ref => this.loginInput = ref}></input>
         <input type="submit" value="Submit"></input>
-        <ColorSelector />
+        <ColorSelector colorChangedFunction={ this.colorChanged } />
       </form>
     );
   }

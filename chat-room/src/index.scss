@@ -27,6 +27,20 @@ code {
             text-align: right;
         }
     }
+
+    #user-login {
+        height: 400px;
+        text-align: center;
+        background-color: rgba(211, 211, 211, 0.5);
+
+        .login-subheader {
+            display: inline;
+        };
+
+        .twitter-picker {
+            margin: auto;
+        }
+    }
     
     #message-container {
         list-style-type: none;

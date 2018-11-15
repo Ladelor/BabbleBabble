@@ -15,6 +15,7 @@ class ChatRoom extends Component {
     this.state = {
       isUserSignedIn: false,
       username: "",
+      textColor: '#000000',
     };
   }
 
@@ -32,7 +33,7 @@ class ChatRoom extends Component {
       return  (
           <div>
             <MessageBoard chatServer={this.socket} />
-            <ChatEntry chatServer={this.socket} username={this.state.username} />
+            <ChatEntry chatServer={this.socket} username={this.state.username} textColor={this.state.textColor} />
           </div>
         );
     }
@@ -41,11 +42,11 @@ class ChatRoom extends Component {
     }
   }
 
-  userLoggedIn = (username) => {
-    this.username = username;
+  userLoggedIn = (username, colorSelected) => {
     this.setState({
       isUserSignedIn: true,
       username: username,
+      textColor: colorSelected,
     });
   }
 

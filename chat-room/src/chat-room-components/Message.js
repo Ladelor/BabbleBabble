@@ -6,12 +6,13 @@ class Message extends Component {
     console.log(props);
     this.messageText = props.messageObject.messageText;
     this.sender = props.messageObject.sender;
+    this.textColor = props.messageObject.textColor;
     console.log(props.messageObject);
   }
 
   render() {
     return (
-        <li className="message">{this.sender}: {this.messageText}</li>
+        <li style={{ color: this.textColor }} className="message">{this.sender}: {this.messageText}</li>
     );
   }
 }

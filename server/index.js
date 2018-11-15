@@ -24,12 +24,22 @@ io.on('connection', function(socket){
 
 function getMessageObject(messageObject) {
   let curDate = new Date();
-  return { 'messageText': messageObject.message, 'timeStamp': curDate.getTime(), 'sender': messageObject.username };
+  return { 
+    'messageText': messageObject.message, 
+    'timeStamp': curDate.getTime(), 
+    'sender': messageObject.username, 
+    'textColor': messageObject.textColor 
+  };
 }
 
 function getUserEnteredSeverObject(username) {
   let curDate = new Date();
-  return { 'messageText': username + " joined the chatroom", 'timeStamp': curDate.getTime(), 'sender': "Server" };
+  return { 
+    'messageText': username + ' joined the chatroom', 
+    'timeStamp': curDate.getTime(), 
+    'sender': 'Server',
+    'textColor': '#000000'
+  };
 
 }
 

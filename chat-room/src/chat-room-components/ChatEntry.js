@@ -5,6 +5,7 @@ class ChatEntry extends Component {
     super(props);
     this.chatServer = props.chatServer;
     this.username = props.username;
+    this.textColor = props.textColor;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -13,7 +14,7 @@ class ChatEntry extends Component {
     if (this.chatInput.value === "") {
       return;
     }
-    this.chatServer.emit('message', { 'message': this.chatInput.value, 'username': this.username } );
+    this.chatServer.emit('message', { 'message': this.chatInput.value, 'username': this.username, 'textColor': this.textColor } );
     this.chatInput.value = "";
   }
 
