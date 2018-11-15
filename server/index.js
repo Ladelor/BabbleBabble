@@ -5,8 +5,8 @@ const io = require('socket.io')();
 
 io.on('connection', function(socket){
   console.log('a user connected');
-  socket.on('message', function(message) {
-    io.emit('message', getMessageObject(message));
+  socket.on('message', function(messageObject) {
+    io.emit('message', getMessageObject(messageObject));
   });
 
   socket.on('userLogin', function(loginAttempt) {
@@ -22,9 +22,9 @@ io.on('connection', function(socket){
   });
 });
 
-function getMessageObject(message) {
+function getMessageObject(messageObject) {
   let curDate = new Date();
-  return { 'message': message, 'timeStamp': curDate.getTime() };
+  return { 'message': messageObject.message, 'timeStamp': curDate.getTime(), 'sender': messageObject.username };
 }
 
 function getLoginObject(username) {

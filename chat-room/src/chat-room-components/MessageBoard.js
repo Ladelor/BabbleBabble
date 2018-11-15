@@ -10,6 +10,7 @@ class MessageBoard extends Component {
   }
 
   addMessage(message){
+    console.log(message.sender);
     this.setState(prevState => ({
       messages: [...prevState.messages, message]
     }));
@@ -18,7 +19,7 @@ class MessageBoard extends Component {
   getMessageComponents() {
     let messageComponents = [];
     this.state.messages.forEach(function(messageObject){
-      messageComponents.push(<Message key={ messageObject.timeStamp } messageText={ messageObject.message } />);
+      messageComponents.push(<Message key={ messageObject.timeStamp } messageText={ messageObject.message } sender={ messageObject.sender } />);
     });
     return messageComponents;
   }

@@ -4,6 +4,7 @@ class ChatEntry extends Component {
   constructor(props){
     super(props);
     this.chatServer = props.chatServer;
+    this.username = props.username;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -12,7 +13,8 @@ class ChatEntry extends Component {
     if (this.chatInput.value === "") {
       return;
     }
-    this.chatServer.emit('message', this.chatInput.value);
+    this.chatServer.emit('message', { 'message': this.chatInput.value, 'username': this.username } );
+    console.log(this.username);
     this.chatInput.value = "";
   }
 

@@ -12,17 +12,17 @@ class ChatRoom extends Component {
     this.socket = openSocket("http://localhost:3001");
     this.cookies = new Cookies();
     this.dailyLogInCookie = "dailyLogIn";
-    this.username = ""
     this.state = {
       isUserSignedIn: false,
+      username: "",
     };
   }
 
   componentWillMount() {
     if (this.cookies.get(this.dailyLogInCookie)) {
-      this.username = this.cookies.get(this.dailyLogInCookie);
       this.setState({
         isUserSignedIn: true,
+        username: this.cookies.get(this.dailyLogInCookie),
       });
     }
   }
@@ -32,7 +32,7 @@ class ChatRoom extends Component {
       return  (
           <div>
             <MessageBoard chatServer={this.socket} />
-            <ChatEntry chatServer={this.socket} />
+            <ChatEntry chatServer={this.socket} username={this.state.username} />
           </div>
         );
     }
@@ -43,8 +43,10 @@ class ChatRoom extends Component {
 
   userLoggedIn = (username) => {
     this.username = username;
+    console.log(username);
     this.setState({
       isUserSignedIn: true,
+      username: username,
     });
   }
 
