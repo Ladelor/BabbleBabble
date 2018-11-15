@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cookies from 'universal-cookie'
+import Cookies from 'universal-cookie';
 
 class UserLogin extends Component {
   constructor(props) {
@@ -7,18 +7,32 @@ class UserLogin extends Component {
       this.cookies = new Cookies();
       this.chatServer = props.chatServer;
       this.dailyLoginCookie = props.dailyLoginCookie;
-      this.chatServer.on('userLoginAttempt', this.userLoginAttempt.bind(this));
+      this.loginFunction = props.loginFunction;
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.chatServer.on('loginSuccess', this.loginSuccess.bind(this));
+      this.chatServer.on('loginFail', this.loginFail.bind(this));
   }
 
-  handleSubmit() {
-    this.chatServer.emit('userLogin', this.loginInput.value);
-  }
-
-  userLoginAttempt(loginAttempt) {
-    if (loginAttempt.success) {
-      //TODO: create cookie, pass to up to parent, etc.
+  handleSubmit(e) {
+    e.preventDefault();
+    if (this.loginInput.value === "") {
+      return;
     }
+    this.chatServer.emit('userLogin', { 'username': this.loginInput.value} );
+    this.chatServer.value = "";
+  }
+
+  loginSuccess(loginAttempt) {
+    this.cookies.set(this.dailyLoginCookie, loginAttempt.username, { maxAge: this.getOneDayInSeconds() });
+    this.loginFunction(loginAttempt.username);
+  }
+
+  getOneDayInSeconds() {
+    return 1 * 24 * 60 * 60;
+  }
+
+  loginFail(loginAttempt) {
+    alert("Username " + loginAttempt.username + " is already taken");
   }
 
   render() {

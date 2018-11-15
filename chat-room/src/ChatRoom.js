@@ -12,6 +12,7 @@ class ChatRoom extends Component {
     this.socket = openSocket("http://localhost:3001");
     this.cookies = new Cookies();
     this.dailyLogInCookie = "dailyLogIn";
+    this.username = ""
     this.state = {
       isUserSignedIn: false,
     };
@@ -19,6 +20,7 @@ class ChatRoom extends Component {
 
   componentWillMount() {
     if (this.cookies.get(this.dailyLogInCookie)) {
+      this.username = this.cookies.get(this.dailyLogInCookie);
       this.setState({
         isUserSignedIn: true,
       });
@@ -35,8 +37,15 @@ class ChatRoom extends Component {
         );
     }
     else {
-      return <UserLogin chatServer={this.socket} dailyLogInCookie={this.dailyLogInCookie} />;
+      return <UserLogin chatServer={this.socket} dailyLoginCookie={this.dailyLogInCookie} loginFunction={this.userLoggedIn}/>;
     }
+  }
+
+  userLoggedIn = (username) => {
+    this.username = username;
+    this.setState({
+      isUserSignedIn: true,
+    });
   }
 
   render() {

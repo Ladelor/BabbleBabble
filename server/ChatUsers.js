@@ -30,3 +30,5 @@ class ChatUsers {
         }
     }
 }
+
+module.exports.ChatUsers = ChatUsers;
