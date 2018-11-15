@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import ColorSelector from './ColorSelector'
 import Utils from '../Utils'
 
 class UserLogin extends Component {
@@ -39,6 +40,7 @@ class UserLogin extends Component {
       <form id="user-login" onSubmit={this.handleSubmit}>
         <input type="text" name="login-input" ref={ref => this.loginInput = ref}></input>
         <input type="submit" value="Submit"></input>
+        <ColorSelector />
       </form>
     );
   }
