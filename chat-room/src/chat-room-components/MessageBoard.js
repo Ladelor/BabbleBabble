@@ -14,13 +14,15 @@ class MessageBoard extends Component {
     this.setState(prevState => ({
       messages: [...prevState.messages, message]
     }));
+    console.log(this.state.messages);
   }
 
   getMessageComponents() {
     let messageComponents = [];
     this.state.messages.forEach(function(messageObject){
-      messageComponents.push(<Message key={ messageObject.timeStamp } messageText={ messageObject.message } sender={ messageObject.sender } />);
+      messageComponents.push(<Message messageObject={ messageObject } key={ messageObject.timeStamp }/>);
     });
+
     return messageComponents;
   }
 
