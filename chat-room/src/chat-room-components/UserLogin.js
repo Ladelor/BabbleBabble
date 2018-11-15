@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import Utils from '../Utils'
 
 class UserLogin extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class UserLogin extends Component {
       this.chatServer = props.chatServer;
       this.dailyLoginCookie = props.dailyLoginCookie;
       this.loginFunction = props.loginFunction;
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.chatServer.on('loginSuccess', this.loginSuccess.bind(this));
       this.chatServer.on('loginFail', this.loginFail.bind(this));
@@ -23,15 +25,12 @@ class UserLogin extends Component {
   }
 
   loginSuccess(loginAttempt) {
-    this.cookies.set(this.dailyLoginCookie, loginAttempt.username, { maxAge: this.getOneDayInSeconds() });
+    this.cookies.set(this.dailyLoginCookie, loginAttempt.username, { maxAge: Utils.convertDaysToSeconds(1) });
     this.loginFunction(loginAttempt.username);
   }
-
-  getOneDayInSeconds() {
-    return 1 * 24 * 60 * 60;
-  }
-
+  
   loginFail(loginAttempt) {
+    //TODO: Make this something less annoying than an alert
     alert("Username " + loginAttempt.username + " is already taken");
   }
 

@@ -14,7 +14,6 @@ class ChatEntry extends Component {
       return;
     }
     this.chatServer.emit('message', { 'message': this.chatInput.value, 'username': this.username } );
-    console.log(this.username);
     this.chatInput.value = "";
   }
 
