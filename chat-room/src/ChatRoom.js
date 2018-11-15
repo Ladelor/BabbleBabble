@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie'
 import Header from './chat-room-components/Header'
 import MessageBoard from './chat-room-components/MessageBoard';
 import ChatEntry from './chat-room-components/ChatEntry';
-import UserLogIn from './chat-room-components/UserLogIn';
+import UserLogin from './chat-room-components/UserLogin';
 
 class ChatRoom extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class ChatRoom extends Component {
         );
     }
     else {
-      return <UserLogIn />;
+      return <UserLogin chatServer={this.socket} dailyLogInCookie={this.dailyLogInCookie} />;
     }
   }
 
