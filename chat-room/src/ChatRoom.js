@@ -25,15 +25,29 @@ class ChatRoom extends Component {
     }
   }
 
+  getChatRoomContents() {
+    if (this.state.isUserSignedIn) {
+      return  (
+          <div>
+            <MessageBoard chatServer={this.socket} />
+            <ChatEntry chatServer={this.socket}/>
+          </div>
+        );
+    }
+    else {
+      return <UserLogIn />;
+    }
+  }
+
   render() {
-    let chatRoomContents = this.state.isUserSignedIn ? <MessageBoard chatServer={this.socket} /> : <UserLogIn />;
+    let chatRoomContents = this.getChatRoomContents();
 
     return (
         <div id="chat-room">
             <script src="/socket.io/socket.io.js"></script>
             <Header />
             {chatRoomContents}
-            <ChatEntry chatServer={this.socket}/>
+           
         </div>
     );
   }
