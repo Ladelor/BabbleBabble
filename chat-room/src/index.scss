@@ -33,12 +33,18 @@ code {
         text-align: center;
         background-color: rgba(211, 211, 211, 0.5);
 
+        .login-section {
+            padding-top: 8px;
+        }
+
         .login-subheader {
             display: inline;
-        };
+        }
 
         .twitter-picker {
             margin: auto;
+            left: 112px;
+            top: 13px;
         }
     }
     

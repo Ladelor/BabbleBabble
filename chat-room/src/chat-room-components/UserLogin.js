@@ -45,10 +45,14 @@ class UserLogin extends Component {
   render() {
     return (
       <form id="user-login" onSubmit={this.handleSubmit}>
-        <h4 className="login-subheader">Choose username: </h4>
-        <input type="text" name="login-input" ref={ref => this.loginInput = ref}></input>
-        <input type="submit" value="Submit"></input>
-        <ColorSelector colorChangedFunction={ this.colorChanged } />
+        <div className="login-section">
+          <h4 className="login-subheader">Choose username: </h4>
+          <input type="text" name="login-input" ref={ref => this.loginInput = ref}></input>
+          <input type="submit" value="Submit"></input>
+        </div>
+        <div className="login-section">
+          <ColorSelector colorChangedFunction={ this.colorChanged } />
+        </div>
       </form>
     );
   }
