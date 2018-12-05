@@ -22,7 +22,7 @@ class UserLogin extends Component {
     if (this.loginInput.value === "") {
       return;
     }
-    this.chatServer.emit('userLogin', { 'username': this.loginInput.value} );
+    this.chatServer.emit('userLogin', { 'username': this.loginInput.value } );
     this.chatServer.value = "";
   }
 
