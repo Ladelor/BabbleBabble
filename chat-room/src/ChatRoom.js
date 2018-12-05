@@ -6,6 +6,7 @@ import MessageBoard from './chat-room-components/MessageBoard';
 import ChatEntry from './chat-room-components/ChatEntry';
 import UserLogin from './chat-room-components/UserLogin';
 
+//Component for the whole chatroom
 class ChatRoom extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,8 @@ class ChatRoom extends Component {
     };
   }
 
+  //Overrides event for when chatroom is about to be added to page
+  //Uses daily cookie to determine if login or message board should be displayed
   componentWillMount() {
     if (this.cookies.get(this.dailyLogInCookie)) {
       this.setState({
@@ -28,6 +31,8 @@ class ChatRoom extends Component {
     }
   }
 
+  //Gets chatroom components based on if user is logged in
+  //Returns either MessageBoard and ChatEntry or UserLogin
   getChatRoomContents() {
     if (this.state.isUserSignedIn) {
       return  (
@@ -42,6 +47,8 @@ class ChatRoom extends Component {
     }
   }
 
+  //Function given to login component to get information from succesful login attempt
+  //Params: string: username, string: colorSelected
   userLoggedIn = (username, colorSelected) => {
     this.setState({
       isUserSignedIn: true,
@@ -50,6 +57,7 @@ class ChatRoom extends Component {
     });
   }
 
+  //Renders Chatroom
   render() {
     let chatRoomContents = this.getChatRoomContents();
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Clock from './Clock';
 
+//Component for header in chatroom
 class Header extends Component {
+  //Renders header
   render() {
     return (
         <div id="header">

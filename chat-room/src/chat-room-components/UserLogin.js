@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 import ColorSelector from './ColorSelector'
 import Utils from '../Utils'
 
+//Component for UserLogin section
 class UserLogin extends Component {
   constructor(props) {
       super(props);
@@ -17,6 +18,8 @@ class UserLogin extends Component {
       this.state = { colorSelected: '#000000' };
   }
 
+  //Function for form submit of user login
+  //Params: event from handleSubmit
   handleSubmit(e) {
     e.preventDefault();
     if (this.loginInput.value === "") {
@@ -26,22 +29,29 @@ class UserLogin extends Component {
     this.chatServer.value = "";
   }
 
+  //Function given to ColorSelector component to set state to the current color selected
+  //Params: string: color selected
   colorChanged = (color) => {
     this.setState({
       colorSelected: color.hex,
     });
   }
 
+  //Function called when server emits a succesful login attempt
+  //Params: object: login attempt
   loginSuccess(loginAttempt) {
     this.cookies.set(this.dailyLoginCookie, loginAttempt.username, { maxAge: Utils.convertDaysToSeconds(1) });
     this.loginFunction(loginAttempt.username, this.state.colorSelected);
   }
   
+  //Function called when server emits an unsuccesful login attempt
+  //Params: object: login attempt
   loginFail(loginAttempt) {
     //TODO: Make this something less annoying than an alert
     alert("Username " + loginAttempt.username + " is already taken");
   }
 
+  //Renders user login
   render() {
     return (
       <form id="user-login" onSubmit={this.handleSubmit}>

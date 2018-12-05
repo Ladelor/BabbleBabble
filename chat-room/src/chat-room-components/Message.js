@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Component for message in chatroom message board
 class Message extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +11,7 @@ class Message extends Component {
     console.log(props.messageObject);
   }
 
+  //Renders Message
   render() {
     return (
         <li style={{ color: this.textColor }} className="message">{this.sender}: {this.messageText}</li>

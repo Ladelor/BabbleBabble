@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//Component for user chat entry
 class ChatEntry extends Component {
   constructor(props){
     super(props);
@@ -9,6 +10,8 @@ class ChatEntry extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //Handler for for form submit of user chat entry
+  //Params: the event passed in by onSubmit
   handleSubmit(e) {
     e.preventDefault();
     if (this.chatInput.value === "") {
@@ -18,6 +21,7 @@ class ChatEntry extends Component {
     this.chatInput.value = "";
   }
 
+  //Renders ChatEntry
   render() {
     return (
         <form id="chat-entry" onSubmit={this.handleSubmit}>
